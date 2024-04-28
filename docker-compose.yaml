@@ -1,0 +1,82 @@
+version: "3"
+
+services:
+    app1:
+        build: app
+        container_name: app1
+        command: sh -c "uvicorn main:app --host 0.0.0.0 --port 8000 --reload"
+        ports:
+            - 8001:8000
+        volumes:
+            - ./app:/app
+
+    app2:
+        build: app
+        container_name: app2
+        command: sh -c "uvicorn main:app --host 0.0.0.0 --port 8000 --reload"
+        ports:
+            - 8002:8000
+        volumes:
+            - ./app:/app
+
+    app3:
+        build: app
+        container_name: app3
+        command: sh -c "uvicorn main:app --host 0.0.0.0 --port 8000 --reload"
+        ports:
+            - 8003:8000
+        volumes:
+            - ./app:/app
+
+    app4:
+        build: app
+        container_name: app4
+        command: sh -c "uvicorn main:app --host 0.0.0.0 --port 8000 --reload"
+        ports:
+            - 8004:8000
+        volumes:
+            - ./app:/app
+
+    app5:
+        build: app
+        container_name: app5
+        command: sh -c "uvicorn main:app --host 0.0.0.0 --port 8000 --reload"
+        ports:
+            - 8005:8000
+        volumes:
+            - ./app:/app
+
+    app6:
+        build: app
+        container_name: app6
+        command: sh -c "uvicorn main:app --host 0.0.0.0 --port 8000 --reload"
+        ports:
+            - 8006:8000
+        volumes:
+            - ./app:/app
+
+    app7:
+        build: app
+        container_name: app7
+        command: sh -c "uvicorn main:app --host 0.0.0.0 --port 8000 --reload"
+        ports:
+            - 8007:8000
+        volumes:
+            - ./app:/app
+
+    app8:
+        build: app
+        container_name: app8
+        command: sh -c "uvicorn main:app --host 0.0.0.0 --port 8000 --reload"
+        ports:
+            - 8008:8000
+        volumes:
+            - ./app:/app
+
+    nginx:
+        image: nginx:alpine
+        container_name: nginx
+        ports:
+            - 8000:80
+        volumes:
+            - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
