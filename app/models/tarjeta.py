@@ -3,10 +3,10 @@ from config.database import Base
 
 class Tarjeta(Base):
     
-    __tablename__ = "movies"
+    __tablename__ = "tarjetas"
     
     id = Column(Integer, primary_key=True)
-    title = Column(String)
+    tipoDeTarjeta = Column(String)
     overview = Column(String)
     year = Column(Integer)
     rating = Column(Float)
