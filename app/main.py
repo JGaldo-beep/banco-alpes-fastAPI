@@ -13,7 +13,7 @@ app.add_middleware(ErrorHandler)
 app.include_router(tarjeta_router)
 app.include_router(auth_router)
 
-# Base.metadata.create_all(bind=engine)
+Base.metadata.create_all(bind=engine)
 
 @app.get('/')
 def root():
