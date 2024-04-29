@@ -26,11 +26,15 @@ class TarjetaService():
     
     def update_tarjeta(self, id: int, data: Tarjeta):
         tarjeta = self.db.query(TarjetaModel).filter(TarjetaModel.id == id).first()
-        tarjeta.title = data.title
-        tarjeta.overview = data.overview
-        tarjeta.year = data.year
-        tarjeta.rating = data.rating
-        tarjeta.category = data.category
+        tarjeta.name_card = data.name_card
+        tarjeta.card_type = data.card_type
+        tarjeta.main_benefits = data.main_benefits
+        tarjeta.annual_percentage_rate = data.annual_percentage_rate
+        tarjeta.annual_fee = data.annual_fee
+        tarjeta.minimum_requirements = data.minimum_requirements
+        tarjeta.payments_options = data.payments_options
+        tarjeta.credit_limit = data.credit_limit
+        tarjeta.apply_online = data.apply_online
         self.db.commit()
         return
     

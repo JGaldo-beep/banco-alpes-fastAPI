@@ -12,7 +12,13 @@ from schemas.tarjeta import Tarjeta
 
 tarjeta_router = APIRouter()
 
-@tarjeta_router.get('/tarjetas', tags = ['tarjetas'], response_model = List[Tarjeta], status_code=200, dependencies=[Depends(JWTBeater())])
+# @tarjeta_router.get('/tarjetas', tags = ['tarjetas'], response_model = List[Tarjeta], status_code=200, dependencies=[Depends(JWTBeater())])
+# def get_tarjetas() -> List[Tarjeta]:
+#     db = Session()
+#     result = TarjetaService(db).get_tarjetas()
+#     return JSONResponse(status_code=200, content = jsonable_encoder(result))
+
+@tarjeta_router.get('/tarjetas', tags = ['tarjetas'], response_model = List[Tarjeta], status_code=200)
 def get_tarjetas() -> List[Tarjeta]:
     db = Session()
     result = TarjetaService(db).get_tarjetas()
