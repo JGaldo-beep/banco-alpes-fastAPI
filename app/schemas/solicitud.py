@@ -1,6 +1,8 @@
 from typing import Optional
 from pydantic import BaseModel, Field
 
+#hola
+
 class Solicitud(BaseModel):
     id: Optional[int] = None
     solicitante: str = Field(min_length = 5, max_length = 50)
