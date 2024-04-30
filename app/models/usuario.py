@@ -1,6 +1,6 @@
 import datetime
 
-from sqlalchemy import Column, Float, Integer, String
+from sqlalchemy import Column, Float, Integer, String, DateTime
 from config.database import Base
 
 
@@ -14,5 +14,5 @@ class Usuario(Base):
     email = Column(String)
     pais = Column(String)
     ciudad = Column(String)
-    fechaRegistro = Column(datetime.datetime)
+    fechaRegistro = Column(DateTime, default=datetime.datetime.utcnow)
 
