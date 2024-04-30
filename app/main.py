@@ -2,7 +2,9 @@ from middlewares.error_handler import ErrorHandler
 from router.auth import auth_router
 from router.tarjeta import tarjeta_router
 from config.database import engine, Base
+from router.usuario import usuario_router
 from fastapi import FastAPI
+
 import socket
 
 app = FastAPI()
@@ -12,6 +14,7 @@ app.version = "0.0.1"
 app.add_middleware(ErrorHandler)
 app.include_router(tarjeta_router)
 app.include_router(auth_router)
+app.include_router(usuario_router)
 
 # Base.metadata.create_all(bind=engine)
 

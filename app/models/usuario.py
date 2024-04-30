@@ -1,3 +1,5 @@
+import datetime
+
 from sqlalchemy import Column, Float, Integer, String
 from config.database import Base
 
@@ -12,4 +14,5 @@ class Usuario(Base):
     email = Column(String)
     pais = Column(String)
     ciudad = Column(String)
+    fechaRegistro = Column(datetime.datetime)
 

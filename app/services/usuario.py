@@ -1,3 +1,4 @@
+import datetime 
 from models.usuario import Usuario as UsuarioModel
 from schemas.usuario import Usuario
 
@@ -11,7 +12,14 @@ class UsuarioService():
         return result
     
     def get_usuario(self, cedula: int):
+
         result = self.db.query(UsuarioModel).filter(UsuarioModel.cedula == cedula).first()
+        return result
+    
+    def get_new_usuarios(self):
+        today = datetime.datetime.now()
+        two_months_ago = today - datetime.timedelta(days=60)
+        result = self.db.query(UsuarioModel).filter(UsuarioModel.fechaRegistro >= two_months_ago).all()
         return result
     
     def create_usuario(self, usuario: Usuario):

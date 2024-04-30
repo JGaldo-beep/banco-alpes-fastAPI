@@ -37,6 +37,13 @@ def get_usuarios_by_name(nombre: str = Query(min_length = 5, max_length = 15)):
         return JSONResponse(status_code=404, content = { "message": "Not found!" })
     return JSONResponse(status_code=200, content = jsonable_encoder(result))
 
+@usuario_router.get('/usuarios/new', tags = ['usuarios'], response_model = List[Usuario], status_code=200)
+def get_new_usuarios() -> List[Usuario]:
+    db = Session()
+    result = UsuarioService(db).get_new_usuarios()
+    return JSONResponse(status_code=200, content = jsonable_encoder(result))
+
+
 @usuario_router.post('/usuarios', tags = ['usuarios'], response_model = dict, status_code=201)
 def create_usuario(usuario: Usuario) -> dict:
         
