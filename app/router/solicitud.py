@@ -11,7 +11,13 @@ from schemas.solicitud import Solicitud
 
 solicitud_router = APIRouter()
 
-@solicitud_router.get('/solicitudes', tags = ['solicitudes'], response_model = List[Solicitud], status_code=200, dependencies=[Depends(JWTBeater())])
+# @solicitud_router.get('/solicitudes', tags = ['solicitudes'], response_model = List[Solicitud], status_code=200, dependencies=[Depends(JWTBeater())])
+# def get_solicitudes() -> List[Solicitud]:
+#     db = Session()
+#     result = SolicitudService(db).get_solicitudes()
+#     return JSONResponse(status_code=200, content = jsonable_encoder(result))
+
+@solicitud_router.get('/solicitudes', tags = ['solicitudes'], response_model = List[Solicitud], status_code=200)
 def get_solicitudes() -> List[Solicitud]:
     db = Session()
     result = SolicitudService(db).get_solicitudes()
