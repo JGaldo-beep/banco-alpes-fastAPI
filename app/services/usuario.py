@@ -16,6 +16,7 @@ class UsuarioService():
         result = self.db.query(UsuarioModel).filter(UsuarioModel.cedula == cedula).first()
         return result
     
+    #Funcionalidad pedida
     def get_new_usuarios(self):
         today = datetime.datetime.now()
         
