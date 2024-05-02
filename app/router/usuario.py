@@ -20,14 +20,7 @@ def get_usuarios() -> List[Tarjeta]:
     result = TarjetaService(db).get_usuarios()
     return JSONResponse(status_code=200, content = jsonable_encoder(result))
 
-@usuario_router.get('/usuarios/{cedula}', tags = ['usuarios'], response_model = Usuario)
-def get_usuario(cedula: int = Path(ge = 1, le = 2000)) -> Usuario:
-    db = Session()
-    result = UsuarioService(db).get_usuario(cedula)
-    if not result:
-        return JSONResponse(status_code=404, content={"message": "Not found!"})
-        
-    return JSONResponse(status_code=200, content = jsonable_encoder(result))
+
 
 @usuario_router.get('/usuarios/', tags = ['usuarios'], response_model = List[Usuario], status_code=200)
 def get_usuarios_by_name(nombre: str = Query(min_length = 5, max_length = 15)):
@@ -41,6 +34,15 @@ def get_usuarios_by_name(nombre: str = Query(min_length = 5, max_length = 15)):
 def get_new_usuarios() -> List[Usuario]:
     db = Session()
     result = UsuarioService(db).get_new_usuarios()
+    return JSONResponse(status_code=200, content = jsonable_encoder(result))
+
+@usuario_router.get('/usuarios/{cedula}', tags = ['usuarios'], response_model = Usuario)
+def get_usuario(cedula: int = Path(ge = 1, le = 2000)) -> Usuario:
+    db = Session()
+    result = UsuarioService(db).get_usuario(cedula)
+    if not result:
+        return JSONResponse(status_code=404, content={"message": "Not found!"})
+        
     return JSONResponse(status_code=200, content = jsonable_encoder(result))
 
 

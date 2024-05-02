@@ -18,9 +18,11 @@ class UsuarioService():
     
     def get_new_usuarios(self):
         today = datetime.datetime.now()
+        
         two_months_ago = today - datetime.timedelta(days=60)
         result = self.db.query(UsuarioModel).filter(UsuarioModel.fechaRegistro >= two_months_ago).all()
-        return result
+        number_of_users = len(result)
+        return  number_of_users,result
     
     def create_usuario(self, usuario: Usuario):
 
