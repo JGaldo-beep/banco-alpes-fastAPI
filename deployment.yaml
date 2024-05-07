@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fastapi-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: fastapi
+  template:
+    metadata:
+      labels:
+        app: fastapi
+    spec:
+      containers:
+      - name: fastapi
+        image: gcr.io/terraform-420123/fastapi-app:v1
+        command: ["uvicorn"]
+        args: ["main:app", "--host", "0.0.0.0", "--port", "80"]
+        ports:
+        - containerPort: 80

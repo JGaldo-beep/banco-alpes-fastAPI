@@ -14,7 +14,7 @@ database = 'fastapi_database'
 
 database_url = f"postgresql://{username}:{password}@{host}:{port}/{database}"
 
-engine = create_engine(database_url, echo=True)
+engine = create_engine(database_url, echo=True, pool_size=30, max_overflow=70, pool_timeout=30, pool_recycle=1800)
 
 Session = sessionmaker(bind=engine)
 
