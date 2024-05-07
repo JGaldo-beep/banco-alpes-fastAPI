@@ -42,3 +42,5 @@ class TarjetaService():
         self.db.query(TarjetaModel).filter(TarjetaModel.id == id).delete()
         self.db.commit()
         return
+    
+    #HolaBB
