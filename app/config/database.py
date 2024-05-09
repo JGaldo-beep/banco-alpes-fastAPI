@@ -14,7 +14,14 @@ database = 'fastapi_database'
 
 database_url = f"postgresql://{username}:{password}@{host}:{port}/{database}"
 
-engine = create_engine(database_url, echo=True, pool_size=30, max_overflow=70, pool_timeout=30, pool_recycle=1800)
+connected_args=  {
+        'sslmode': 'verify-ca',
+        'sslrootcert': '/etc/ssl/certs/server-ca.pem',
+        'sslcert': '/etc/ssl/certs/client-cert.pem',
+        'sslkey': '/etc/ssl/certs/client-key.pem'
+}
+
+engine = create_engine(database_url, echo=True, pool_size=30, max_overflow=70, pool_timeout=30, pool_recycle=1800, connect_args=connected_args)
 
 Session = sessionmaker(bind=engine)
 
