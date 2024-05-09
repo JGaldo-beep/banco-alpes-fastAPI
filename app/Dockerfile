@@ -12,9 +12,9 @@ RUN pip install --upgrade pip && \
     pip install -r requirements.txt
 
 # Copia los certificados SSL desde tu directorio local al directorio /etc/ssl/certs dentro del contenedor
-COPY ./app/certificates/server-ca.pem /etc/ssl/certs/
-COPY ./app/certificates/client-cert.pem /etc/ssl/certs/
-COPY ./app/certificates/client-key.pem /etc/ssl/certs/
+COPY certificates/server-ca.pem /etc/ssl/certs/
+COPY certificates/client-cert.pem /etc/ssl/certs/
+COPY certificates/client-key.pem /etc/ssl/certs/
 
 # Copia el resto de tu código de aplicación
 COPY . /app

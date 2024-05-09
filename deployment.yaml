@@ -6,15 +6,15 @@ spec:
   replicas: 3
   selector:
     matchLabels:
-      app: fastapi
+      app: fastapi-app  
   template:
     metadata:
       labels:
-        app: fastapi
+        app: fastapi-app  
     spec:
       containers:
-      - name: fastapi
-        image: gcr.io/terraform-420123/fastapi-app:v1
+      - name: fastapi-app  
+        image: gcr.io/terraform-420123/fastapi-app:v5-ssl  
         command: ["uvicorn"]
         args: ["main:app", "--host", "0.0.0.0", "--port", "80"]
         ports:
