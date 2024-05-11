@@ -8,18 +8,15 @@ from middlewares.jwt_bearer import JWTBeater
 from models.usuario import Usuario as UsuarioModel
 
 from services.usuario import UsuarioService
-from services.tarjeta import TarjetaService
 from schemas.usuario import Usuario
-from schemas.tarjeta import Tarjeta
 
 usuario_router = APIRouter()
 
 @usuario_router.get('/usuarios', tags = ['usuarios'], response_model = List[Usuario], status_code=200, dependencies=[Depends(JWTBeater())])
-def get_usuarios() -> List[Tarjeta]:
+def get_usuarios() -> List[Usuario]:
     db = Session()
-    result = TarjetaService(db).get_usuarios()
+    result = UsuarioService(db).get_usuarios()
     return JSONResponse(status_code=200, content = jsonable_encoder(result))
-
 
 
 @usuario_router.get('/usuarios/', tags = ['usuarios'], response_model = List[Usuario], status_code=200)
