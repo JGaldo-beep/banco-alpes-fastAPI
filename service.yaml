@@ -8,4 +8,4 @@ spec:
   - port: 80
     targetPort: 80
   selector:
-    app: fastapi
+    app: fastapi-app  # Actualizado para coincidir con las etiquetas de los pods
