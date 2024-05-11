@@ -16,6 +16,9 @@ COPY certificates/server-ca.pem /etc/ssl/certs/
 COPY certificates/client-cert.pem /etc/ssl/certs/
 COPY certificates/client-key.pem /etc/ssl/certs/
 
+# Cambia los permisos del archivo client-key.pem para asegurar que cumple con los requisitos de seguridad
+RUN chmod 600 /etc/ssl/certs/client-key.pem
+
 # Copia el resto de tu código de aplicación
 COPY . /app
 
