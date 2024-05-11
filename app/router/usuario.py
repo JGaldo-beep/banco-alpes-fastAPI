@@ -20,8 +20,6 @@ def get_usuarios() -> List[Tarjeta]:
     result = TarjetaService(db).get_usuarios()
     return JSONResponse(status_code=200, content = jsonable_encoder(result))
 
-
-
 @usuario_router.get('/usuarios/', tags = ['usuarios'], response_model = List[Usuario], status_code=200)
 def get_usuarios_by_name(nombre: str = Query(min_length = 5, max_length = 15)):
     db = Session()
