@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Welcome, {{ account.user.username }}</h1>
+    <p>Balance: {{ account.balance }}</p>
+    <h2>Transactions</h2>
+    <ul>
+        {% for transaction in transactions %}
+        <li>{{ transaction.timestamp }} - {{ transaction.description }}: {{ transaction.amount }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'deposit' %}">Deposit</a>
+    <a href="{% url 'withdraw' %}">Withdraw</a>
+    <a href="{% url 'logout' %}">Logout</a>
+</body>
+</html>
