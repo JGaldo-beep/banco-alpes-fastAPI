@@ -1,19 +1,20 @@
 from django.contrib.auth.models import User
-from django.db import models
+from mongoengine import Document, fields
+import mongoengine
 
-class Account(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    balance = models.DecimalField(max_digits=10, decimal_places=2)
+class User(Document):
+    username = fields.StringField(required=True, unique=True)
+    email = fields.EmailField(required=True, unique=True)
+    password = fields.StringField(required=True)
 
-    def __str__(self):
-        return f"{self.user.username}'s account"
+class Account(Document):
+    user = fields.ReferenceField(User, required=True, reverse_delete_rule=mongoengine.CASCADE)
+    balance = fields.IntField()
 
-class Transaction(models.Model):
-    account = models.ForeignKey(Account, on_delete=models.CASCADE)
-    amount = models.DecimalField(max_digits=10, decimal_places=2)
-    timestamp = models.DateTimeField(auto_now_add=True)
-    description = models.CharField(max_length=255)
+class Transaction(Document):
+    account = fields.ReferenceField(Account, required=True)
+    amount = fields.IntField(required=True, default=0)
+    type = fields.StringField(choices=['deposit', 'withdraw'], required=True)
 
-    def __str__(self):
-        return f"Transaction {self.id} for {self.account.user.username}"
+ 
 

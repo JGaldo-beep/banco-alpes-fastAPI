@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import mongoengine
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -42,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'mongoengine',
     'usuarios'
 ]
 
@@ -80,12 +82,20 @@ WSGI_APPLICATION = 'usuarios_banco.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+   'default': {
+        'ENGINE': ''  # Usa un backend dummy
     }
 }
 
+MONGODB_SETTINGS = {
+    'db': 'Arqui',
+    'host': 'mongodb+srv://scastrod:<password>@arqui.qecbh5s.mongodb.net/',  # O el host de tu MongoDB
+    'port': 27017,        # O el puerto de tu MongoDB
+    'username': 'scastrod',  # Si usas autenticación
+    'password': 'Camaro11' # Si usas autenticación
+}
+
+mongoengine.connect(**MONGODB_SETTINGS)
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
