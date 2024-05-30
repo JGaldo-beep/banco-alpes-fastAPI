@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tarjetas-deployment
+spec:
+  replicas: 3  
+  selector:
+    matchLabels:
+      app: tarjetas
+  template:
+    metadata:
+      labels:
+        app: tarjetas
+    spec:
+      containers:
+      - name: tarjetas
+        image: bancoalpes/tarjetas:1.0.0  
+        ports:
+        - containerPort: 80
+        env:
+          - name: DATABASE_URL  
+            value: "postgresql://myuser:password-fastapi@35.226.62.13:5432/tarjetas"  
+
