@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: tarjetas
-        image: gcr.io/terraform-420123/tarjetas:1.0.3
+        image: gcr.io/terraform-420123/tarjetas:1.0.5
         ports:
         - containerPort: 80
         env:
