@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Usuario</title>
+</head>
+<body>
+    <h1>Agregar Usuario</h1>
+    <form method="post" action="{{ url_for('user_list') }}">
+        <input type="text" name="name" placeholder="Nombre" required>
+        <input type="email" name="email" placeholder="Correo Electrónico" required>
+        <button type="submit">Agregar Usuario</button>
+    </form>
+    <a href="{{ url_for('user_list') }}">Volver a la Lista de Usuarios</a>
+</body>
+</html>

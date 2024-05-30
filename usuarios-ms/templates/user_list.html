@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Usuarios</title>
+</head>
+<body>
+    <h1>Lista de Usuarios</h1>
+    <form method="post" action="{{ url_for('user_list') }}">
+        <input type="text" name="name" placeholder="Nombre" required>
+        <input type="email" name="email" placeholder="Correo Electrónico" required>
+        <button type="submit">Agregar Usuario</button>
+    </form>
+    <ul>
+        {% for user in users %}
+            <li>{{ user.name }} - {{ user.email }} <a href="{{ url_for('delete_user', id=user._id) }}">Eliminar</a></li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('index') }}">Volver a la Página Principal</a>
+</body>
+</html>
