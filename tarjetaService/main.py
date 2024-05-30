@@ -33,8 +33,8 @@ async def rate_limit_middleware(request: Request, call_next):
     current_count = redis_client.incr(redis_key)
 
     # Establecer el límite de peticiones y el tiempo de expiración (en segundos)
-    limit = 5  # 5 peticiones por minuto
-    expire_time = 60  # 60 segundos (1 minuto)
+    limit = 15000  # 5 peticiones por minuto
+    expire_time = 6000  # 60 segundos (1 minuto)
 
     # Configurar la expiración de la clave en Redis si es la primera petición
     if current_count == 1:
