@@ -1,4 +1,3 @@
-Django
-mongoengine
-requests
-django-rest-framework-mongoengine
+flask 
+flask_pymongo
+pymongo 
